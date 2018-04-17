@@ -36,6 +36,7 @@ public class GraficaPantalla {
 		graf.setSize(600, 400);
 		graf.setLayout(new BorderLayout());
 		graf.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                graf.setLocation(700, 0);
                 
                 graf.add(topPanel, BorderLayout.NORTH);
                 topPanel.setLayout(new BorderLayout());
@@ -47,9 +48,15 @@ public class GraficaPantalla {
 		XYSeriesCollection dataset = new XYSeriesCollection(series);
 		JFreeChart chart = ChartFactory.createXYLineChart("Sensor", "Tiempo (Segundos)", "Lectura", dataset);
 		graf.add(new ChartPanel(chart), BorderLayout.CENTER);
+                
     
         graf.setVisible(true);
     }
-		
+	
+     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+       System.out.println("Prueba action boton");
+                                
+         }           
     
 }
