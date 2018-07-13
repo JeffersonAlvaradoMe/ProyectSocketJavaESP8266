@@ -18,7 +18,7 @@ import proyectosocketjavaesp8266.Misocket;
  * @author Cmaster
  */
 public class prueba extends javax.swing.JFrame {
-
+//probandop
     /**
      * Creates new form prueba
      */
@@ -101,10 +101,7 @@ public class prueba extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
-        // TODO add your handling code here:
-        //String dt=
-     
-        
+       series.add(1,10);
         
 
         
