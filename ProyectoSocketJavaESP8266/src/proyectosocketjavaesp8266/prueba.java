@@ -6,9 +6,19 @@
 package proyectosocketjavaesp8266;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import proyectosocketjavaesp8266.Misocket;
@@ -17,27 +27,52 @@ import proyectosocketjavaesp8266.Misocket;
  *
  * @author Cmaster
  */
-public class prueba extends javax.swing.JFrame {
-//probandop
+public class prueba extends javax.swing.JFrame implements Runnable {
+
     /**
      * Creates new form prueba
      */
     XYSeries series = new XYSeries("Sensor Electrocardiograma");
 		XYSeriesCollection dataset = new XYSeriesCollection(series);
-		JFreeChart chart = ChartFactory.createXYLineChart("Sensor", "Tiempo (Segundos)", "Lectura", dataset);
-                Thread hil = new Thread();
+		JFreeChart chart = ChartFactory.createXYLineChart("Sensor", "Tiempo (Segundos)", "Lectura", dataset, PlotOrientation.VERTICAL,true,true,false);
+                Thread Hilo = new Thread(this);
                  int x=0;
+                 //hola
                  
     public prueba() {
         initComponents();
         
-                
-               hil.start();
                 pane.removeAll();
 		pane.add(new ChartPanel(chart), BorderLayout.CENTER);
                 pane.validate();
+                Hilo.start();
+                
+                BotonParar.setVisible(false);
+                botonComenzar.setVisible(true);
+         
+            
+                //
     }
+    /*
+    
+    wdewdwe
+    */
+    
 
+    //public
+       double i =0.0;
+       int ss=0;
+    public void datos(){
+        double numero;
+        i++;
+        numero =  (Math.random()*1024)+1;
+        series.add(i,1023-numero);
+        if(i>10){
+            series.clear();
+            i=0;
+            System.out.println("Llgue al 10");
+        }
+    } //No sirvehujj
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,17 +136,38 @@ public class prueba extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
-       series.add(1,10);
+        // TODO add your handling code here:
+        //String dt=
+    datos();
+    //BotonParar.setVisible(true);
+      //holmm nbehfr  
         
-
+      
         
     }//GEN-LAST:event_botonComenzarActionPerformed
 
     private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
         // TODO add your handling code here:
         this.hide();
+        //series.clear();
+        
+        ///rr
+        ///rrr
+        
+        
     }//GEN-LAST:event_BotonPararActionPerformed
 
+    
+    
+    public void datasetActionPerformed(java.awt.event.ActionEvent e) {
+      
+      //if(e.getClickCount()==2){
+         BotonParar.setVisible(true);
+         //botonComenzar.setVisible(true);
+       //}
+    }
+
+    
     /**
      * @param args the command line arguments
      */
@@ -122,8 +178,46 @@ public class prueba extends javax.swing.JFrame {
     private javax.swing.JButton botonComenzar;
     private javax.swing.JPanel pane;
     // End of variables declaration//GEN-END:variables
+//Lights On
+    @Override
+    public void run() {
+        
+           try{
+                //System.out.println("Estoy a la escucha");
+                ServerSocket servidor = new ServerSocket(9999);
+                String mensaje="";
+               //Hilo
+                while(true){
+                    System.out.println("Esperando conexion");
+                Socket misocket = servidor.accept();
+                    System.out.println("Conexion aceptada");
+                misocket.getLocalPort();
+                DataInputStream flujo_entrada = new DataInputStream(misocket.getInputStream());
+                mensaje = flujo_entrada.readUTF();
+                double a = Double.parseDouble(mensaje);
+                System.out.println(a);
+                i=i+1;
+                series.add(i,1023-a);
+                if(i>10){
+                    series.clear(); 
+                    i=0;
+                    System.out.println("LLEGUE HASTA EL 10");
+                }
+                misocket.close();
+                
+                }
+                
+            } catch (IOException ex) {
+                //Logger.getLogger(MarcoServidor.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+            } 
+        
+    }
 
-    
-
-   
 }
+
+//hola
+//hi
+//
+//
+//hola
