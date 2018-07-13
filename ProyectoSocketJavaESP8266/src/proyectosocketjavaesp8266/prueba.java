@@ -15,6 +15,10 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -32,6 +36,10 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     /**
      * Creates new form prueba
      */
+    File fichero = new File("C:/Users/Municipio de Gye/Desktop/holi.txt");
+    PrintWriter escribir = null;
+    FileWriter newline = null;
+                
     XYSeries series = new XYSeries("Sensor Electrocardiograma");
 		XYSeriesCollection dataset = new XYSeriesCollection(series);
 		JFreeChart chart = ChartFactory.createXYLineChart("Sensor", "Tiempo (Segundos)", "Lectura", dataset, PlotOrientation.VERTICAL,true,true,false);
@@ -49,6 +57,8 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 
                 BotonParar.setVisible(true);
                 botonComenzar.setVisible(true);
+                
+                
          
             
                 //
@@ -119,7 +129,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
         // TODO add your handling code here:
         //String dt=
-    datos();
+    //datos();
     //BotonParar.setVisible(true);
       //holmm nbehfr  
         
@@ -185,6 +195,12 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                     i=0;
                     System.out.println("LLEGUE HASTA EL 10");
                 }
+                
+                newline = new FileWriter(fichero,true);
+                escribir = new PrintWriter(newline);
+                escribir.println(a);
+                escribir.close();
+                newline.close();
                 misocket.close();
                 
                 }
