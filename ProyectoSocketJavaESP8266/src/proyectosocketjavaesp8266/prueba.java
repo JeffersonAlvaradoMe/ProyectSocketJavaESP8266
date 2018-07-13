@@ -47,7 +47,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 pane.validate();
                 Hilo.start();
                 
-                BotonParar.setVisible(false);
+                BotonParar.setVisible(true);
                 botonComenzar.setVisible(true);
          
             
@@ -67,11 +67,11 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         i++;
         numero =  (Math.random()*1024)+1;
         series.add(i,1023-numero);
-        if(i>10){
+       /* if(i>10){
             series.clear();
             i=0;
             System.out.println("Llgue al 10");
-        }
+        }*/
     } //No sirvehujj
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,11 +85,14 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         pane = new javax.swing.JPanel();
         botonComenzar = new javax.swing.JButton();
         BotonParar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(51, 255, 51));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pane.setBackground(new java.awt.Color(204, 255, 255));
         pane.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 11, 770, 575));
 
         botonComenzar.setText("Comenzar");
         botonComenzar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +100,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 botonComenzarActionPerformed(evt);
             }
         });
+        getContentPane().add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 604, 99, -1));
 
         BotonParar.setText("Parar");
         BotonParar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,33 +108,10 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 BotonPararActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 604, 103, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(botonComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
-                .addComponent(BotonParar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pane, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonComenzar)
-                    .addComponent(BotonParar))
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectosocketjavaesp8266/azul.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +157,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonParar;
     private javax.swing.JButton botonComenzar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pane;
     // End of variables declaration//GEN-END:variables
 //Lights On
