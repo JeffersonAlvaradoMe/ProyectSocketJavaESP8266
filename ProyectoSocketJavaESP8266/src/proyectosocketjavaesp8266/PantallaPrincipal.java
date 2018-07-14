@@ -52,12 +52,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        botonConexion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(810, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -67,7 +66,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 botonGraficarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonGraficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 180, 70));
+        getContentPane().add(botonGraficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 180, 70));
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
@@ -114,6 +113,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 770, 290));
 
+        botonConexion.setText("CONEXION");
+        botonConexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConexionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonConexion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 140, 50));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectosocketjavaesp8266/azul.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
 
@@ -142,6 +149,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void botonConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConexionActionPerformed
+        // TODO add your handling code here:
+        Conexion cx = new Conexion();
+        cx.setVisible(true);
+    }//GEN-LAST:event_botonConexionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +196,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonConexion;
     private javax.swing.JButton botonGraficar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

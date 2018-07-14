@@ -37,8 +37,25 @@ public class prueba extends javax.swing.JFrame implements Runnable {
      * Creates new form prueba
      */
     File fichero = new File("C:/Users/Municipio de Gye/Desktop/holi.txt");
+    
     PrintWriter escribir = null;
     FileWriter newline = null;
+    
+    public void inicio(){
+        fichero.delete();
+        if(!fichero.exists()){
+            try{
+                fichero.createNewFile();
+                //escribir = new PrintWriter(fichero);
+                //escribir.print(".");
+                //escribir.close();
+            } catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    
                 
     XYSeries series = new XYSeries("Sensor Electrocardiograma");
 		XYSeriesCollection dataset = new XYSeriesCollection(series);
@@ -49,6 +66,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                  
     public prueba() {
         initComponents();
+        inicio();
         
                 pane.removeAll();
 		pane.add(new ChartPanel(chart), BorderLayout.CENTER);
@@ -128,10 +146,9 @@ public class prueba extends javax.swing.JFrame implements Runnable {
 
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
         // TODO add your handling code here:
-        //String dt=
+        
     //datos();
-    //BotonParar.setVisible(true);
-      //holmm nbehfr  
+    
         
       
         
