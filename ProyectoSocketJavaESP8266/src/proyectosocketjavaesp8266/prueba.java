@@ -19,6 +19,8 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -88,7 +90,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     
 
     //public
-       double i =0.0;
+       int i=0;
        int ss=0;
     public void datos(){
         double numero;
@@ -193,33 +195,41 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         
            try{
                 //System.out.println("Estoy a la escucha");
-                ServerSocket servidor = new ServerSocket(9999);
-                String mensaje="";
+                //ServerSocket misocket = new ServerSocket(5000);
+                DatagramSocket servidor = new DatagramSocket(5000);
+                byte [] buffer = new byte[1024];
+                //String mensaje="";
                //Hilo
+               int a1 =0;
                 while(true){
+                    DatagramPacket peticion = new DatagramPacket(buffer, buffer.length);
                     System.out.println("Esperando conexion");
-                Socket misocket = servidor.accept();
+                    servidor.receive(peticion);
+                //Socket misocket = servidor.accept();
                     System.out.println("Conexion aceptada");
-                misocket.getLocalPort();
-                DataInputStream flujo_entrada = new DataInputStream(misocket.getInputStream());
-                mensaje = flujo_entrada.readUTF();
-                double a = Double.parseDouble(mensaje);
+                    System.out.println(peticion);
+                //misocket.getLocalPort();
+                //DataInputStream flujo_entrada = new DataInputStream(misocket.getInputStream());
+                //mensaje = flujo_entrada.readLine();
+                //mensaje = flujo_entrada.readUTF();
+               //int a = Integer.parseInt(mensaje);
+                    String sms = new String(peticion.getData(),0, peticion.getLength());
+                    int a = Integer.parseInt(sms);
                 System.out.println(a);
                 i=i+1;
-                series.add(i,1023-a);
-                if(i>10){
+                series.add(i,a);
+               /* if(i>10){
                     series.clear(); 
                     i=0;
                     System.out.println("LLEGUE HASTA EL 10");
-                }
+                }*/
                 
                 newline = new FileWriter(fichero,true);
                 escribir = new PrintWriter(newline);
                 escribir.println(a);
                 escribir.close();
                 newline.close();
-                misocket.close();
-                
+                //misocket.close();
                 }
                 
             } catch (IOException ex) {
