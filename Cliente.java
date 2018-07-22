@@ -75,15 +75,23 @@ class LaminaMarcoCliente extends JFrame{
         public void actionPerformed(ActionEvent ae) {
             
             try {
-                Socket misocket = new Socket("127.0.0.1",9999);
+                //Socket misocket = new Socket("192.168.100.42",5000);
+                DatagramSocket misocket = new DatagramSocket();
                 String a="";
                 a=Integer.toString(misocket.getLocalPort());
                 campochat.setText("");
                 campochat.append("\nPuerto:"+a);
                 campochat.append("\nServidor a aceptado petición");
-                DataOutputStream flujo_salida = new DataOutputStream(misocket.getOutputStream());
-                flujo_salida.writeUTF(nick.getText());
-                flujo_salida.close();
+                //DataOutputStream flujo_salida = new DataOutputStream(misocket.getOutputStream());
+                //flujo_salida.writeUTF(nick.getText());
+                //flujo_salida.close();
+                InetAddress host = InetAddress.getByName("192.168.100.42");
+                String h = nick.getText();
+                byte[] mensaje = h.getBytes();
+                //DatagramPacket mipaquete;
+                DatagramPacket mipaquete = new DatagramPacket(mensaje, h.length(),host,5000);
+                misocket.send(mipaquete);
+                System.out.println(mipaquete);
             } catch(UnknownHostException e1){
                 e1.printStackTrace();
             }catch (IOException ex) {
