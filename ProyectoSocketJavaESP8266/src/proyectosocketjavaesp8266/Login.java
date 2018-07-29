@@ -49,14 +49,13 @@ public class Login extends javax.swing.JFrame {
             while(rs.next()){
                 capt= rs.getString("cedula");
                 nombre = rs.getString("nombres");
-                if(user.equals(capt)){
+            }
+            if(user.equals(capt)){
                     JOptionPane.showMessageDialog(this,"BIENVENIDO "+nombre+" de cédula: "+user+"!!");
                     cond=true;
-                } else {
+                } else{
                     JOptionPane.showMessageDialog(null,"INCORRECTO");
                 }
-                
-            }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
