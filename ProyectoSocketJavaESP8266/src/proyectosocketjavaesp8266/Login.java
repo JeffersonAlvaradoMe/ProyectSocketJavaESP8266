@@ -38,19 +38,19 @@ public class Login extends javax.swing.JFrame {
     }
 
     
-    public boolean acceder (String user, String clave){
+    public boolean acceder (String user){
         boolean cond=false;
-        /*String capt="";
-        String pwd="";
-        String sql = "SELECT * FROM usuario WHERE nick='"+user+"' AND password='"+clave+"' ";
+        String capt="";
+        String nombre="";
+        String sql = "SELECT * FROM paciente WHERE cedula='"+user+"' ";
         try {
             Statement st = cc.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                capt= rs.getString("nick");
-                pwd = rs.getString("password");
-                if(user.equals(capt) && clave.equals(pwd)){
-                    JOptionPane.showMessageDialog(this,"BIENVENIDO "+user+"!!");
+                capt= rs.getString("cedula");
+                nombre = rs.getString("nombres");
+                if(user.equals(capt)){
+                    JOptionPane.showMessageDialog(this,"BIENVENIDO "+nombre+" de cédula: "+user+"!!");
                     cond=true;
                 } else {
                     JOptionPane.showMessageDialog(null,"INCORRECTO");
@@ -59,7 +59,7 @@ public class Login extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
          return cond;
         
     }
@@ -242,13 +242,16 @@ public class Login extends javax.swing.JFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String a = jTextFieldingreso.getText();
-        String b = new String(jPasswordField1.getPassword());
-        if(acceder(a,b) == true){
+        String paciente = jTextFieldingreso.getText();
+        //String b = new String(jPasswordField1.getPassword());
+        if(acceder(paciente) == true){
            //Interfaz i = new Interfaz();
            //i.setVisible(true);
            //this.setVisible(false);
            //new Login().setVisible(false);
+          //this.setVisible(false);
+          prueba p = new prueba();
+          p.setVisible(true);
           this.setVisible(false);
         }
         
