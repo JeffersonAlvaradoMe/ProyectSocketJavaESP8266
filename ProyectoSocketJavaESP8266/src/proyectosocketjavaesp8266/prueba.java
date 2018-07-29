@@ -95,7 +95,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                  
     public prueba() {
         initComponents();
-        //jLabelhide.setVisible(false);
+        jLabelhide.setVisible(false);
         inicio();
         
                 pane.removeAll();
