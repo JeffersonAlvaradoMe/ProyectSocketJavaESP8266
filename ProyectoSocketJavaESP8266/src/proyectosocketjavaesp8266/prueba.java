@@ -25,6 +25,7 @@ import java.sql.Connection;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -115,8 +116,41 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     
     wdewdwe
     */
-    
-
+   
+public void mostrar(){
+     String c = jTextFieldbuscar.getText();
+     int cod=0;
+    String sql = "SELECT cod_paciente FROM pacientes WHERE nombres='"+c+"' ";
+    try {
+            Statement st = cc.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                cod = rs.getInt("cod_paciente");
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("malo");
+        }
+    int x=0, y=0, pri=0, codi=0; 
+    String sql1 = "SELECT * FROM datos_corazon WHERE cod_paciente='"+cod+"' ";
+    DefaultTableModel modelo = new DefaultTableModel();
+     try {
+            Statement st2 = cc.createStatement();
+            ResultSet rs2 = st2.executeQuery(sql1);
+            modelo.setColumnIdentifiers(new Object[]{"Código","Datos X","Datos Y","Código Paciente"});
+            while(rs2.next()){
+                pri = rs2.getInt("cod_corazon");
+                x = rs2.getInt("datos_x");
+                y = rs2.getInt("datos_y");
+                codi = rs2.getInt("cod_paciente");
+                modelo.addRow(new Object[]{pri,x,y,codi});
+                tabla.setModel(modelo);
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("malo");
+        }
+}
     //public
        int i=0;
        int ss=0;
@@ -143,27 +177,32 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         pane = new javax.swing.JPanel();
-        botonComenzar = new javax.swing.JButton();
-        BotonParar = new javax.swing.JButton();
-        jLabelnombres = new javax.swing.JLabel();
         jLabelhide = new javax.swing.JLabel();
+        BotonParar = new javax.swing.JButton();
+        botonComenzar = new javax.swing.JButton();
+        jLabelnombres = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jLabelbuscar = new javax.swing.JLabel();
+        jTextFieldbuscar = new javax.swing.JTextField();
+        jButtonaceptar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 255, 51));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         pane.setBackground(new java.awt.Color(204, 255, 255));
         pane.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 96, 770, 490));
+        jPanel1.add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 96, 770, 490));
 
-        botonComenzar.setText("Comenzar");
-        botonComenzar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonComenzarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 604, 99, -1));
+        jLabelhide.setText("jLabel2");
+        jPanel1.add(jLabelhide, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
 
         BotonParar.setText("Parar");
         BotonParar.addActionListener(new java.awt.event.ActionListener() {
@@ -171,16 +210,57 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 BotonPararActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 604, 103, -1));
+        jPanel1.add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 604, 103, -1));
+
+        botonComenzar.setText("Comenzar");
+        botonComenzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonComenzarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 604, 99, -1));
 
         jLabelnombres.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        getContentPane().add(jLabelnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 350, 40));
-
-        jLabelhide.setText("jLabel2");
-        getContentPane().add(jLabelhide, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
+        jPanel1.add(jLabelnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 350, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectosocketjavaesp8266/azul.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 650));
+
+        jTabbedPane1.addTab("tab1", jPanel1);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tabla);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
+
+        jLabelbuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelbuscar.setText("Buscar:");
+        jPanel2.add(jLabelbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 70, 30));
+        jPanel2.add(jTextFieldbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 190, 30));
+
+        jButtonaceptar.setText("BUSCAR");
+        jButtonaceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonaceptarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonaceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 90, 30));
+
+        jTabbedPane1.addTab("tab2", jPanel2);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -208,6 +288,11 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         
     }//GEN-LAST:event_BotonPararActionPerformed
 
+    private void jButtonaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaceptarActionPerformed
+        // TODO add your handling code here:
+        mostrar();
+    }//GEN-LAST:event_jButtonaceptarActionPerformed
+
     
     
     public void datasetActionPerformed(java.awt.event.ActionEvent e) {
@@ -227,10 +312,18 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonParar;
     private javax.swing.JButton botonComenzar;
+    private javax.swing.JButton jButtonaceptar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelbuscar;
     public javax.swing.JLabel jLabelhide;
     private javax.swing.JLabel jLabelnombres;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextFieldbuscar;
     private javax.swing.JPanel pane;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 //Lights On
     @Override
