@@ -17,7 +17,8 @@ public class basedata {
         try  {
         Class.forName("com.mysql.jdbc.Driver");
             cn = DriverManager.getConnection("jdbc:mysql://localhost/pulsos_corazon","root","");
-       
+       //
+       //ohh
         }
 
 catch ( Exception ex){
