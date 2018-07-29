@@ -21,6 +21,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -44,8 +46,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     FileWriter newline = null;
     
     public void inicio(){
-        escribir.write("");
-        //fichero.delete();
+        fichero.delete();
         if(!fichero.exists()){
             try{
                 fichero.createNewFile();
