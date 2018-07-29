@@ -252,6 +252,8 @@ public class Login extends javax.swing.JFrame {
           prueba p = new prueba();
           p.setVisible(true);
           this.setVisible(false);
+          p.jLabelhide.setText(paciente);
+          
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed

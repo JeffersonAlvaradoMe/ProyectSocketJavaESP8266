@@ -31,12 +31,14 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import proyectosocketjavaesp8266.Misocket;
 
+
 /**
  *
  * @author Cmaster
  */
 public class prueba extends javax.swing.JFrame implements Runnable {
-
+    
+    
     /**
      * Creates new form prueba
      */
@@ -117,6 +119,8 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         pane = new javax.swing.JPanel();
         botonComenzar = new javax.swing.JButton();
         BotonParar = new javax.swing.JButton();
+        jLabelnombres = new javax.swing.JLabel();
+        jLabelhide = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 255, 51));
@@ -124,7 +128,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
 
         pane.setBackground(new java.awt.Color(204, 255, 255));
         pane.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 11, 770, 575));
+        getContentPane().add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 96, 770, 490));
 
         botonComenzar.setText("Comenzar");
         botonComenzar.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +145,13 @@ public class prueba extends javax.swing.JFrame implements Runnable {
             }
         });
         getContentPane().add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 604, 103, -1));
+
+        jLabelnombres.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelnombres.setText("BIENVENIDO:");
+        getContentPane().add(jLabelnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 170, 40));
+
+        jLabelhide.setText("jLabel2");
+        getContentPane().add(jLabelhide, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectosocketjavaesp8266/azul.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
@@ -189,6 +200,8 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton BotonParar;
     private javax.swing.JButton botonComenzar;
     private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabelhide;
+    private javax.swing.JLabel jLabelnombres;
     private javax.swing.JPanel pane;
     // End of variables declaration//GEN-END:variables
 //Lights On
