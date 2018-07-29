@@ -263,7 +263,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         String us = jTextFieldnombres.getText();
+        /* String us = jTextFieldnombres.getText();
         String pw = new String(jPasswordField2.getPassword());
         String pw2 = new String(jPasswordField3.getPassword());
         String comb = jComboBoxsexo.getSelectedItem().toString();  
@@ -276,7 +276,7 @@ public class Login extends javax.swing.JFrame {
             jPasswordField2.setText("");
             jPasswordField3.setText("");
             JOptionPane.showMessageDialog(null,"VALIDACIÓN INCORRECTA DE LA CONTRASEÑA");
-        }
+        }*/
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
