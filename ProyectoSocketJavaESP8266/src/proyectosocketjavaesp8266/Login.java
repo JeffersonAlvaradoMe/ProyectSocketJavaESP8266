@@ -82,6 +82,28 @@ public class Login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        int ced=0;
+        String mysql2="INSERT INTO datos_corazon (datos_x, datos_y, cod_paciente)"+ "values (?,?,?)";
+        String my = "SELECT cod_paciente FROM pacientes WHERE cedula = '"+cedula+"'";
+        try {
+            Statement st2 = cc.createStatement();
+            ResultSet registro = st2.executeQuery(my);
+            
+            if (registro.next()==true) {
+  	        ced = registro.getInt("cod_paciente");
+  			  	
+  	    }else {
+  		setTitle("No hay");
+  	    }
+            PreparedStatement insertar2 = cc.prepareStatement(mysql2);
+            
+           insertar2.setInt(1,0);
+           insertar2.setInt(2,0);
+           insertar2.setInt(3,ced);
+           insertar2.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
          
     }
     
