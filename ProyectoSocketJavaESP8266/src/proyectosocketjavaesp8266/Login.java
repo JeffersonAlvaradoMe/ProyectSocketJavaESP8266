@@ -294,7 +294,11 @@ public class Login extends javax.swing.JFrame {
         }
         
         create_user(nom, ape, ced, sexo, fecha, lugar);
-        
+        jTextFieldnombres.setText("");
+        jTextFieldapellidos.setText("");
+        jTextFieldcedula.setText("");
+        jTextFieldfecha.setText("");
+        jTextFieldlugar.setText("");
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
