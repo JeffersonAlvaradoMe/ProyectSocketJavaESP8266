@@ -42,7 +42,7 @@ public class Login extends javax.swing.JFrame {
         boolean cond=false;
         String capt="";
         String nombre="";
-        String sql = "SELECT * FROM paciente WHERE cedula='"+user+"' ";
+        String sql = "SELECT * FROM pacientes WHERE cedula='"+user+"' ";
         try {
             Statement st = cc.createStatement();
             ResultSet rs = st.executeQuery(sql);
