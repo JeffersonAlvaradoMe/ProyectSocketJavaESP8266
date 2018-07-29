@@ -65,15 +65,18 @@ public class Login extends javax.swing.JFrame {
     }
     
     
-    public void create_user (String user, String clave, String tipo){
-        String mysql="INSERT INTO usuario (nick, password, tipoUsuario)"+ "values (?,?,?)";
+    public void create_user (String nombres, String apellidos, String cedula, String cod_sexo, String fecha, String lugar){
+        String mysql="INSERT INTO pacientes (nombres, apellidos, cedula, cod_sexo, fecha_nacimiento, lugar_nacimiento)"+ "values (?,?,?,?,?,?)";
         try {
             Statement st = cc.createStatement();
             PreparedStatement insertar = cc.prepareStatement(mysql);
             
-           insertar.setString(1,user);
-           insertar.setString(2,clave);
-           insertar.setString(3,tipo);
+           insertar.setString(1,nombres);
+           insertar.setString(2,apellidos);
+           insertar.setString(3,cedula);
+           insertar.setString(4,cod_sexo);
+           insertar.setString(5,fecha);
+           insertar.setString(6,lugar);
            insertar.executeUpdate();
             
         } catch (SQLException ex) {
@@ -254,6 +257,22 @@ public class Login extends javax.swing.JFrame {
             jPasswordField3.setText("");
             JOptionPane.showMessageDialog(null,"VALIDACIÓN INCORRECTA DE LA CONTRASEÑA");
         }*/
+        
+        String nom = jTextFieldnombres.getText();
+        String ape = jTextFieldapellidos.getText();
+        String ced = jTextFieldcedula.getText();
+        String sexo = jComboBoxsexo.getSelectedItem().toString(); 
+        String fecha = jTextFieldfecha.getText();
+        String lugar = jTextFieldlugar.getText();
+        
+        if(sexo.equals("MASCULINO")){
+            sexo = "M";
+        } else{
+            sexo = "F";
+        }
+        
+        create_user(nom, ape, ced, sexo, fecha, lugar);
+        
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
