@@ -53,6 +53,8 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     
     public void inicio(){
         fichero.delete();
+        
+        
         if(!fichero.exists()){
             try{
                 fichero.createNewFile();
@@ -62,6 +64,23 @@ public class prueba extends javax.swing.JFrame implements Runnable {
             } catch(IOException e){
                 e.printStackTrace();
             }
+        }
+    }
+    
+    public void consulta(String cedula){
+        String sql = "SELECT nombres FROM pacientes WHERE cedula='"+cedula+"' ";
+        String nom="";
+        try {
+            Statement st = cc.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                nom = rs.getString("nombres");
+            }
+            System.out.println(nom);
+            jLabelnombres.setText("BIENVENIDO: "+nom);
+           
+        } catch (SQLException ex) {
+            System.out.println("malo");
         }
     }
     
@@ -76,10 +95,8 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                  
     public prueba() {
         initComponents();
-        jLabelhide.setVisible(false);
+        //jLabelhide.setVisible(false);
         inicio();
-        String campo = jLabelhide.getText();
-        consulta(campo);
         
                 pane.removeAll();
 		pane.add(new ChartPanel(chart), BorderLayout.CENTER);
@@ -115,22 +132,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         }*/
     } //No sirvehujj
     
-    public void consulta(String cedula){
-        String sql = "SELECT * FROM pacientes WHERE cedula='"+cedula+"' ";
-        String nom="";
-        try {
-            Statement st = cc.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
-                nom = rs.getString("nombres");
-            }
-            
-            jLabelnombres.setText("BIENVENIDO: "+nom);
-           
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,8 +174,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         getContentPane().add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 604, 103, -1));
 
         jLabelnombres.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelnombres.setText("BIENVENIDO:");
-        getContentPane().add(jLabelnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 170, 40));
+        getContentPane().add(jLabelnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 350, 40));
 
         jLabelhide.setText("jLabel2");
         getContentPane().add(jLabelhide, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
@@ -188,7 +189,9 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         // TODO add your handling code here:
         
     //datos();
-    
+    String campo = "";
+    campo =jLabelhide.getText();
+    consulta(campo);
         
       
         
