@@ -261,6 +261,30 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 System.out.println(a);
                 i=i+1;
                 series.add(i,a);
+                
+                 int ced=0;
+                 String cedu = jLabelhide.getText();
+        String mysql2="INSERT INTO datos_corazon (datos_x, datos_y, cod_paciente)"+ "values (?,?,?)";
+        String my = "SELECT cod_paciente FROM pacientes WHERE cedula = '"+cedu+"'";
+        try {
+            Statement st2 = cc.createStatement();
+            ResultSet registro = st2.executeQuery(my);
+            
+            if (registro.next()==true) {
+  	        ced = registro.getInt("cod_paciente");
+  			  	
+  	    }else {
+  		setTitle("No hay");
+  	    }
+            PreparedStatement insertar2 = cc.prepareStatement(mysql2);
+            
+           insertar2.setInt(1,i);
+           insertar2.setInt(2,a);
+           insertar2.setInt(3,ced);
+           insertar2.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+        }
                /* if(i>10){
                     series.clear(); 
                     i=0;

@@ -81,7 +81,7 @@ public class Login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        int ced=0;
+        /*int ced=0;
         String mysql2="INSERT INTO datos_corazon (datos_x, datos_y, cod_paciente)"+ "values (?,?,?)";
         String my = "SELECT cod_paciente FROM pacientes WHERE cedula = '"+cedula+"'";
         try {
@@ -102,7 +102,7 @@ public class Login extends javax.swing.JFrame {
            insertar2.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
          
     }
     
