@@ -226,7 +226,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 
                 newline = new FileWriter(fichero,true);
                 escribir = new PrintWriter(newline);
-                escribir.println(a);
+                escribir.println(i+"\t"+a);
                 escribir.close();
                 newline.close();
                 //misocket.close();
