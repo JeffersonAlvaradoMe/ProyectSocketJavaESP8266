@@ -44,7 +44,8 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     FileWriter newline = null;
     
     public void inicio(){
-        fichero.delete();
+        escribir.write("");
+        //fichero.delete();
         if(!fichero.exists()){
             try{
                 fichero.createNewFile();
