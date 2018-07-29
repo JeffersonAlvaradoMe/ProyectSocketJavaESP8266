@@ -8,6 +8,7 @@ package proyectosocketjavaesp8266;
 //import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
+import java.sql.Connection;
 
 
 public class basedata {
@@ -15,11 +16,11 @@ public class basedata {
     public Connection conectar()  {
         try  {
         Class.forName("com.mysql.jdbc.Driver");
-            cn =(Connection) DriverManager.getConnection("jdbc:mysql://localhost/prueba_tienda","root","");
+            cn = DriverManager.getConnection("jdbc:mysql://localhost/pulsos_corazon","root","");
        
         }
 
-catch ( ClassNotFoundException | SQLException ex){
+catch ( Exception ex){
     System.out.println("Se ha encontrado el siguiente error"+ex.getMessage());
     
     }

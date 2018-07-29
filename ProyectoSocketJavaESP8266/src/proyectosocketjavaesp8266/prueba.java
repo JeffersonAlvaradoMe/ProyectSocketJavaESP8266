@@ -231,7 +231,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 newline.close();
                 //misocket.close();
                 }
-                
+                 
             } catch (IOException ex) {
                 //Logger.getLogger(MarcoServidor.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
