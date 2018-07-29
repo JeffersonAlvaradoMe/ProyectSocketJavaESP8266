@@ -241,8 +241,3 @@ public class prueba extends javax.swing.JFrame implements Runnable {
 
 }
 
-//hola
-//hi
-//
-//
-//hola
