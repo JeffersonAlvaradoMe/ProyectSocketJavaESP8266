@@ -21,6 +21,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.sql.Connection;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jfree.chart.ChartFactory;
@@ -38,6 +40,8 @@ import proyectosocketjavaesp8266.Misocket;
  */
 public class prueba extends javax.swing.JFrame implements Runnable {
     
+    basedata bd = new basedata(); 
+    Connection cc = bd.conectar();
     
     /**
      * Creates new form prueba
@@ -72,7 +76,10 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                  
     public prueba() {
         initComponents();
+        jLabelhide.setVisible(false);
         inicio();
+        String campo = jLabelhide.getText();
+        consulta(campo);
         
                 pane.removeAll();
 		pane.add(new ChartPanel(chart), BorderLayout.CENTER);
@@ -107,6 +114,24 @@ public class prueba extends javax.swing.JFrame implements Runnable {
             System.out.println("Llgue al 10");
         }*/
     } //No sirvehujj
+    
+    public void consulta(String cedula){
+        String sql = "SELECT * FROM pacientes WHERE cedula='"+cedula+"' ";
+        String nom="";
+        try {
+            Statement st = cc.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                nom = rs.getString("nombres");
+            }
+            
+            jLabelnombres.setText("BIENVENIDO: "+nom);
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
