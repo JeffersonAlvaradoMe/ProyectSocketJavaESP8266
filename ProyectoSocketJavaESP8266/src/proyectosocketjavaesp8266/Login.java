@@ -40,19 +40,12 @@ public class Login extends javax.swing.JFrame {
     
     public boolean acceder (String user, String clave){
         boolean cond=false;
-        String capt="";
+        /*String capt="";
         String pwd="";
         String sql = "SELECT * FROM usuario WHERE nick='"+user+"' AND password='"+clave+"' ";
         try {
             Statement st = cc.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            /*while(rs.next()){
-                if(user.equalsIgnoreCase("nick") && clave.equalsIgnoreCase("password")){
-                    JOptionPane.showMessageDialog(this,"BIENVENIDO: "+user);
-                } else{
-                    JOptionPane.showMessageDialog(this,"USUARIO ERRÓNEO");
-                }
-            }*/
             while(rs.next()){
                 capt= rs.getString("nick");
                 pwd = rs.getString("password");
@@ -63,26 +56,10 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"INCORRECTO");
                 }
                 
-                
-                //cond=false;
-                /*else if(capt.equals("Invitado")){
-                    JOptionPane.showMessageDialog(rootPane,"INVITADO");
-                } else {
-                    JOptionPane.showMessageDialog(this,"NO EXISTE");
-                }*/
-                
-                //if(!capt.equals("Administrador") && !capt.equals("Invitado")){
-                  //  JOptionPane.showMessageDialog(this,"NO EXISTE");
-                //}
-                
-                //if(user=="" || clave==""){
-                  //  JOptionPane.showMessageDialog(this,"INGRESE DATOS");
-                //}
-                
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
          return cond;
         
     }
