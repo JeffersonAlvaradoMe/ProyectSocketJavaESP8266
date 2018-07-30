@@ -248,7 +248,7 @@ public void mostrar(){
         jLabelbuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelbuscar.setText("Buscar:");
         jPanel2.add(jLabelbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 70, 30));
-        jPanel2.add(jTextFieldbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 190, 30));
+        jPanel2.add(jTextFieldbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 190, 30));
 
         jButtonaceptar.setText("BUSCAR");
         jButtonaceptar.addActionListener(new java.awt.event.ActionListener() {
