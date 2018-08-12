@@ -399,6 +399,75 @@ public void mostrar(){
         
     }
 
+    public void tcp(){
+    try{
+                //System.out.println("Estoy a la escucha");
+                ServerSocket servidor = new ServerSocket(5000);
+                //DatagramSocket servidor = new DatagramSocket(5000);
+                //byte [] buffer = new byte[1024];
+                String mensaje="";
+               //Hilo
+               int a1 =0;
+                while(true){
+                    //DatagramPacket peticion = new DatagramPacket(buffer, buffer.length);
+                    System.out.println("Esperando conexion");
+                    //servidor.receive(peticion);
+                Socket misocket = servidor.accept();
+                    System.out.println("Conexion aceptada");
+                    //System.out.println(peticion);
+                //misocket.getLocalPort();
+                DataInputStream flujo_entrada = new DataInputStream(misocket.getInputStream());
+                mensaje = flujo_entrada.readLine();
+                //mensaje = flujo_entrada.readUTF();
+               int a = Integer.parseInt(mensaje);
+                    //String sms = new String(peticion.getData(),0, peticion.getLength());
+                    //int a = Integer.parseInt(sms);
+                System.out.println(a);
+                i=i+1;
+                series.add(i,a);
+                
+                 int ced=0;
+                 String cedu = jLabelhide.getText();
+        String mysql2="INSERT INTO datos_corazon (datos_x, datos_y, cod_paciente)"+ "values (?,?,?)";
+        String my = "SELECT cod_paciente FROM pacientes WHERE cedula = '"+cedu+"'";
+        try {
+            Statement st2 = cc.createStatement();
+            ResultSet registro = st2.executeQuery(my);
+            
+            if (registro.next()==true) {
+  	        ced = registro.getInt("cod_paciente");
+  			  	
+  	    }else {
+  		setTitle("No hay");
+  	    }
+            PreparedStatement insertar2 = cc.prepareStatement(mysql2);
+            
+           insertar2.setInt(1,i);
+           insertar2.setInt(2,a);
+           insertar2.setInt(3,ced);
+           insertar2.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+        }
+               /* if(i>10){
+                    series.clear(); 
+                    i=0;
+                    System.out.println("LLEGUE HASTA EL 10");
+                }*/
+                
+                newline = new FileWriter(fichero,true);
+                escribir = new PrintWriter(newline);
+                escribir.println(i+"\t"+a);
+                escribir.close();
+                newline.close();
+                //misocket.close();
+                }
+                 
+            } catch (IOException ex) {
+                //Logger.getLogger(MarcoServidor.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+            } 
+}
 }
 
 
