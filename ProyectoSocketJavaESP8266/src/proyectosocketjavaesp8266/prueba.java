@@ -170,7 +170,7 @@ public void mostrar(){
         }*/
     } //No sirvehujj
     
-    
+    //richi
     
     /**
      * This method is called from within the constructor to initialize the form.
