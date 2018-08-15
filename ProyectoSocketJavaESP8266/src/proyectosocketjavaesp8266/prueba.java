@@ -193,6 +193,17 @@ public void mostrar(){
         botonComenzar = new javax.swing.JButton();
         nombre = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        onda = new javax.swing.JLabel();
+        onda1 = new javax.swing.JLabel();
+        onda3 = new javax.swing.JLabel();
+        onda4 = new javax.swing.JLabel();
+        onda5 = new javax.swing.JLabel();
+        onda6 = new javax.swing.JLabel();
+        onda7 = new javax.swing.JLabel();
+        onda8 = new javax.swing.JLabel();
+        onda9 = new javax.swing.JLabel();
+        onda11 = new javax.swing.JLabel();
+        onda10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -229,8 +240,8 @@ public void mostrar(){
         jPanel1.add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, 120, 40));
 
         nombre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        nombre.setText("nombre");
-        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 350, 40));
+        nombre.setText("Bienvenido:Sujeto_Prueba");
+        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 350, 40));
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -239,6 +250,50 @@ public void mostrar(){
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 590, -1, 40));
+
+        onda.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
+        jPanel1.add(onda, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 60, 40));
+
+        onda1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
+        jPanel1.add(onda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 60, 40));
+
+        onda3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
+        jPanel1.add(onda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 60, 40));
+
+        onda4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
+        jPanel1.add(onda4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 60, 40));
+
+        onda5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
+        jPanel1.add(onda5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 60, 40));
+
+        onda6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
+        jPanel1.add(onda6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 60, 40));
+
+        onda7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/roja.png"))); // NOI18N
+        jPanel1.add(onda7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 60, 40));
+
+        onda8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
+        jPanel1.add(onda8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 60, 40));
+
+        onda9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/roja.png"))); // NOI18N
+        jPanel1.add(onda9, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 60, 40));
+
+        onda11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cora.png"))); // NOI18N
+        jPanel1.add(onda11, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 60, 40));
+
+        onda10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        onda10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cora.png"))); // NOI18N
+        jPanel1.add(onda10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 560, 80, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wi.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 650));
@@ -283,12 +338,7 @@ public void mostrar(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
-        // TODO add your handling code here:
-        
-    //datos();
-    
-    
-    //Al disparar el el evento del boton comenzar, se comienza la lecrua de datos desde el socket...
+       
     Hilo.start();
    // botonComenzar.disable();
         
@@ -360,6 +410,17 @@ public void mostrar(){
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldbuscar;
     public javax.swing.JLabel nombre;
+    public javax.swing.JLabel onda;
+    public javax.swing.JLabel onda1;
+    public javax.swing.JLabel onda10;
+    public javax.swing.JLabel onda11;
+    public javax.swing.JLabel onda3;
+    public javax.swing.JLabel onda4;
+    public javax.swing.JLabel onda5;
+    public javax.swing.JLabel onda6;
+    public javax.swing.JLabel onda7;
+    public javax.swing.JLabel onda8;
+    public javax.swing.JLabel onda9;
     private javax.swing.JPanel pane;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
