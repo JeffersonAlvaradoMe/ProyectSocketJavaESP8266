@@ -209,7 +209,7 @@ public void mostrar(){
 
         pane.setBackground(new java.awt.Color(204, 255, 255));
         pane.setLayout(new java.awt.BorderLayout());
-        jPanel1.add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 96, 970, 490));
+        jPanel1.add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 1310, 490));
         jPanel1.add(jLabelhide, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
 
         BotonParar.setText("Parar");
@@ -218,7 +218,7 @@ public void mostrar(){
                 BotonPararActionPerformed(evt);
             }
         });
-        jPanel1.add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 604, 103, -1));
+        jPanel1.add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 583, 110, 40));
 
         botonComenzar.setText("Comenzar");
         botonComenzar.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +226,7 @@ public void mostrar(){
                 botonComenzarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 604, 99, -1));
+        jPanel1.add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, 120, 40));
 
         nombre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         nombre.setText("nombre");
@@ -238,10 +238,10 @@ public void mostrar(){
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 600, -1, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 590, -1, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 650));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wi.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 650));
 
         jTabbedPane1.addTab("Recepción de datos", jPanel1);
 
@@ -277,7 +277,7 @@ public void mostrar(){
 
         jTabbedPane1.addTab("Datos obtenidos", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 660));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1970, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -315,19 +315,19 @@ public void mostrar(){
     }//GEN-LAST:event_jButtonaceptarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         long tiempoinicio=0;
         long total,finali;
         if(l==0){
-        tiempoinicio=System.currentTimeMillis();
-        l++;
+            tiempoinicio=System.currentTimeMillis();
+            l++;
         }
-        datos(); 
+        datos();
         finali=System.currentTimeMillis();
-       total=finali-tiempoinicio;
-       System.out.println(total/1000);
+        total=finali-tiempoinicio;
+        System.out.println(total/1000);
 
-// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
