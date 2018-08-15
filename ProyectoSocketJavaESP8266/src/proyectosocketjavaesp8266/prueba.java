@@ -57,9 +57,12 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     FileWriter newline = null;
     
     public void inicio(){
+        //navegador  doonde esta jlabelhide?
         //fichero.delete();
-        
-        
+        // prende el cell
+       this.nombre.setText("Bienvenido ");
+     
+   
         if(!fichero.exists()){
             try{
                 fichero.createNewFile();
@@ -82,7 +85,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 nom = rs.getString("nombres");
             }
             System.out.println(nom);
-            jLabelnombres.setText("BIENVENIDO: "+nom);
+            nombre.setText("BIENVENIDO: "+nom);
            
         } catch (SQLException ex) {
             System.out.println("malo");
@@ -99,7 +102,8 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                  //hola
                  
     public prueba() {
-        initComponents();
+       initComponents();
+     
         jLabelhide.setVisible(false);
         inicio();
         
@@ -187,7 +191,7 @@ public void mostrar(){
         jLabelhide = new javax.swing.JLabel();
         BotonParar = new javax.swing.JButton();
         botonComenzar = new javax.swing.JButton();
-        jLabelnombres = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -200,13 +204,12 @@ public void mostrar(){
         setBackground(new java.awt.Color(51, 255, 51));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setForeground(new java.awt.Color(0, 102, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pane.setBackground(new java.awt.Color(204, 255, 255));
         pane.setLayout(new java.awt.BorderLayout());
-        jPanel1.add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 96, 770, 490));
-
-        jLabelhide.setText("jLabel2");
+        jPanel1.add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 96, 970, 490));
         jPanel1.add(jLabelhide, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
 
         BotonParar.setText("Parar");
@@ -225,8 +228,9 @@ public void mostrar(){
         });
         jPanel1.add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 604, 99, -1));
 
-        jLabelnombres.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(jLabelnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 350, 40));
+        nombre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nombre.setText("nombre");
+        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 350, 40));
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -236,8 +240,8 @@ public void mostrar(){
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 600, -1, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectosocketjavaesp8266/azul.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 650));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 650));
 
         jTabbedPane1.addTab("Recepción de datos", jPanel1);
 
@@ -273,7 +277,7 @@ public void mostrar(){
 
         jTabbedPane1.addTab("Datos obtenidos", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 660));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -282,9 +286,7 @@ public void mostrar(){
         // TODO add your handling code here:
         
     //datos();
-    String campo = "";
-    campo =jLabelhide.getText();
-    consulta(campo);
+    
     
     //Al disparar el el evento del boton comenzar, se comienza la lecrua de datos desde el socket...
     Hilo.start();
@@ -352,12 +354,12 @@ public void mostrar(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelbuscar;
     public javax.swing.JLabel jLabelhide;
-    private javax.swing.JLabel jLabelnombres;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldbuscar;
+    public javax.swing.JLabel nombre;
     private javax.swing.JPanel pane;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables

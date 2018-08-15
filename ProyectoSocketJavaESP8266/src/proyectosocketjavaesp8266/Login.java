@@ -51,6 +51,7 @@ public class Login extends javax.swing.JFrame {
                 nombre = rs.getString("nombres");
             }
             if(user.equals(capt)){
+                nombren=nombre;
                     JOptionPane.showMessageDialog(this,"BIENVENIDO "+nombre+" de cédula: "+user+"!!");
                     cond=true;
                 } else{
@@ -59,6 +60,7 @@ public class Login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
          return cond;
         
     }
@@ -77,9 +79,10 @@ public class Login extends javax.swing.JFrame {
            insertar.setString(5,fecha);
            insertar.setString(6,lugar);
            insertar.executeUpdate();
-            
+            JOptionPane.showMessageDialog(null,"Usuario Registrado Correctamente");
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         /*int ced=0;
         String mysql2="INSERT INTO datos_corazon (datos_x, datos_y, cod_paciente)"+ "values (?,?,?)";
@@ -115,17 +118,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanellogin = new javax.swing.JPanel();
-        jLabelicon = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldingreso = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jPanelchange = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -136,11 +128,91 @@ public class Login extends javax.swing.JFrame {
         jTextFieldcedula = new javax.swing.JTextField();
         jTextFieldfecha = new javax.swing.JTextField();
         jTextFieldlugar = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanellogin = new javax.swing.JPanel();
+        jLabelicon = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldingreso = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelchange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add-user222.png"))); // NOI18N
+        jButton3.setText("REGISTRAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanelchange.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 170, 40));
+
+        jLabel5.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel5.setText("REGISTRAR PACIENTE");
+        jLabel5.setAlignmentX(0.5F);
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanelchange.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 190, 30));
+
+        jTextFieldnombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldnombresActionPerformed(evt);
+            }
+        });
+        jPanelchange.add(jTextFieldnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 180, 30));
+
+        jComboBoxsexo.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        jComboBoxsexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASCULINO", "FEMENINO" }));
+        jPanelchange.add(jComboBoxsexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 180, 30));
+
+        jButton5.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atras1.png"))); // NOI18N
+        jButton5.setText("CANCELAR");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanelchange.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
+        jPanelchange.add(jTextFieldapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 180, 30));
+        jPanelchange.add(jTextFieldcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 180, 30));
+        jPanelchange.add(jTextFieldfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 180, 30));
+        jPanelchange.add(jTextFieldlugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 180, 30));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel7.setText("Nombre");
+        jPanelchange.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel9.setText("Fecha Nacimiento");
+        jPanelchange.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel3.setText("Dirección");
+        jPanelchange.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel8.setText("Apellido");
+        jPanelchange.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel10.setText("Cédula");
+        jPanelchange.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondologin2.jpg"))); // NOI18N
+        jPanelchange.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 400));
+
+        getContentPane().add(jPanelchange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 400));
 
         jPanellogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -151,10 +223,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("CÉDULA PACIENTE: ");
         jPanellogin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 170, 20));
         jPanellogin.add(jTextFieldingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 140, -1));
-
-        jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jLabel3.setText("CONTRASEÑA:");
-        jPanellogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 120, 20));
 
         jButton1.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add-user222.png"))); // NOI18N
@@ -175,84 +243,24 @@ public class Login extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanellogin.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 150, 30));
-        jPanellogin.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 120, -1));
-
-        jButton4.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit1.png"))); // NOI18N
-        jButton4.setText("SALIR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanellogin.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, -1));
-
-        jButton6.setText("jButton6");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanellogin.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
+        jPanellogin.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 150, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondologin2.jpg"))); // NOI18N
         jLabel1.setText("    ");
         jPanellogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 400));
 
-        getContentPane().add(jPanellogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jPanelchange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton3.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add-user222.png"))); // NOI18N
-        jButton3.setText("REGISTRAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanelchange.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 170, 40));
-
-        jLabel5.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jLabel5.setText("REGISTRAR PACIENTE");
-        jLabel5.setAlignmentX(0.5F);
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanelchange.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 190, 30));
-        jPanelchange.add(jTextFieldnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 180, 30));
-
-        jComboBoxsexo.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
-        jComboBoxsexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASCULINO", "FEMENINO" }));
-        jPanelchange.add(jComboBoxsexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 180, 30));
-
-        jButton5.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atras1.png"))); // NOI18N
-        jButton5.setText("CANCELAR");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanelchange.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
-        jPanelchange.add(jTextFieldapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 180, 30));
-        jPanelchange.add(jTextFieldcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 180, 30));
-        jPanelchange.add(jTextFieldfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 180, 30));
-        jPanelchange.add(jTextFieldlugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 180, 30));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondologin2.jpg"))); // NOI18N
-        jPanelchange.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 400));
-
-        getContentPane().add(jPanelchange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 400));
+        getContentPane().add(jPanellogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    String nombren;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String paciente = jTextFieldingreso.getText();
         //String b = new String(jPasswordField1.getPassword());
-        if(acceder(paciente) == true){
+       if(acceder(paciente) == true){
+          
            //Interfaz i = new Interfaz();
            //i.setVisible(true);
            //this.setVisible(false);
@@ -261,7 +269,7 @@ public class Login extends javax.swing.JFrame {
           prueba p = new prueba();
           p.setVisible(true);
           this.setVisible(false);
-          p.jLabelhide.setText(paciente);
+          p.jLabelhide.setText(nombren);
           
         }
         
@@ -315,11 +323,6 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         jPanelchange.setVisible(false);
@@ -327,11 +330,9 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
-prueba p = new prueba();
-p.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jTextFieldnombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldnombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldnombresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,19 +374,20 @@ p.setVisible(true);
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBoxsexo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelicon;
     private javax.swing.JPanel jPanelchange;
     private javax.swing.JPanel jPanellogin;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextFieldapellidos;
     private javax.swing.JTextField jTextFieldcedula;
     private javax.swing.JTextField jTextFieldfecha;
