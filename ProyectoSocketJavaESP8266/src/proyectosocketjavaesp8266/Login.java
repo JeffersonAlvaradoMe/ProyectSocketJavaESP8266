@@ -124,6 +124,7 @@ public class Login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanelchange = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
@@ -186,6 +187,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanellogin.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, -1));
+
+        jButton6.setText("jButton6");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanellogin.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondologin2.jpg"))); // NOI18N
         jLabel1.setText("    ");
@@ -318,6 +327,12 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+prueba p = new prueba();
+p.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -360,6 +375,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBoxsexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -19,6 +19,7 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.sql.Connection;
@@ -43,11 +44,14 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     
     basedata bd = new basedata(); 
     Connection cc = bd.conectar();
+    int l=0;
+    Boolean iniciar=false;
+    Boolean Finalizar= false;
     
     /**
      * Creates new form prueba
      */
-    File fichero = new File("C:/Users/Municipio de Gye/Desktop/holi.txt");
+    File fichero = new File("E:\\N6.2\\DisenoRedes\\Feria\\datoslectura.txt");
     
     PrintWriter escribir = null;
     FileWriter newline = null;
@@ -102,7 +106,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 pane.removeAll();
 		pane.add(new ChartPanel(chart), BorderLayout.CENTER);
                 pane.validate();
-                Hilo.start();
+                //Hilo.start();
                 
                 BotonParar.setVisible(true);
                 botonComenzar.setVisible(true);
@@ -184,6 +188,7 @@ public void mostrar(){
         BotonParar = new javax.swing.JButton();
         botonComenzar = new javax.swing.JButton();
         jLabelnombres = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -222,6 +227,14 @@ public void mostrar(){
 
         jLabelnombres.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel1.add(jLabelnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 350, 40));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 600, -1, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectosocketjavaesp8266/azul.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 650));
@@ -272,14 +285,20 @@ public void mostrar(){
     String campo = "";
     campo =jLabelhide.getText();
     consulta(campo);
+    
+    //Al disparar el el evento del boton comenzar, se comienza la lecrua de datos desde el socket...
+    Hilo.start();
+   // botonComenzar.disable();
         
       
         
     }//GEN-LAST:event_botonComenzarActionPerformed
 
     private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
-        // TODO add your handling code here:
-        this.hide();
+        
+        //como evento para q en el metodo q se ejecuta en el RUN, salga del ciclo while
+        Finalizar=true;
+        
         //series.clear();
         
         ///rr
@@ -292,6 +311,22 @@ public void mostrar(){
         // TODO add your handling code here:
         mostrar();
     }//GEN-LAST:event_jButtonaceptarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        long tiempoinicio=0;
+        long total,finali;
+        if(l==0){
+        tiempoinicio=System.currentTimeMillis();
+        l++;
+        }
+        datos(); 
+        finali=System.currentTimeMillis();
+       total=finali-tiempoinicio;
+       System.out.println(total/1000);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     
@@ -312,6 +347,7 @@ public void mostrar(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonParar;
     private javax.swing.JButton botonComenzar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonaceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelbuscar;
@@ -328,8 +364,14 @@ public void mostrar(){
 //Lights On
     @Override
     public void run() {
+        //llamamos al metodo q se quiera, hacen lo mismo, solo q en por ahora tcp usaremos para no perder datos...
+        tcp();
+
         
-           try{
+    }
+    
+    public void udp(){
+               try{
                 //System.out.println("Estoy a la escucha");
                 //ServerSocket misocket = new ServerSocket(5000);
                 DatagramSocket servidor = new DatagramSocket(5000);
@@ -354,8 +396,10 @@ public void mostrar(){
                 System.out.println(a);
                 i=i+1;
                 series.add(i,a);
+       
                 
-                 int ced=0;
+        //GUARDAR EN BASE DE DATOS
+                int ced=0;
                  String cedu = jLabelhide.getText();
         String mysql2="INSERT INTO datos_corazon (datos_x, datos_y, cod_paciente)"+ "values (?,?,?)";
         String my = "SELECT cod_paciente FROM pacientes WHERE cedula = '"+cedu+"'";
@@ -378,6 +422,9 @@ public void mostrar(){
         } catch (SQLException ex) {
             Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        
                /* if(i>10){
                     series.clear(); 
                     i=0;
@@ -396,32 +443,45 @@ public void mostrar(){
                 //Logger.getLogger(MarcoServidor.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
             } 
-        
+    
     }
 
     public void tcp(){
     try{
-                //System.out.println("Estoy a la escucha");
+                System.out.println("Estoy a la escucha");
                 ServerSocket servidor = new ServerSocket(5000);
+                
                 //DatagramSocket servidor = new DatagramSocket(5000);
                 //byte [] buffer = new byte[1024];
                 String mensaje="";
                //Hilo
-               int a1 =0;
-                while(true){
+              // int a1 =0;
+               
+               
+               
+                while(true && Finalizar==false){
+                Socket misocket = servidor.accept();    
+               DataInputStream flujo_entrada = new DataInputStream(misocket.getInputStream());
+               
+                PrintStream salida;
+                salida = new PrintStream(misocket.getOutputStream());
                     //DatagramPacket peticion = new DatagramPacket(buffer, buffer.length);
                     System.out.println("Esperando conexion");
                     //servidor.receive(peticion);
-                Socket misocket = servidor.accept();
+                    
                     System.out.println("Conexion aceptada");
                     //System.out.println(peticion);
                 //misocket.getLocalPort();
-                DataInputStream flujo_entrada = new DataInputStream(misocket.getInputStream());
-                mensaje = flujo_entrada.readLine();
+                 mensaje = flujo_entrada.readLine();
+                
+                
+                
                 //mensaje = flujo_entrada.readUTF();
                int a = Integer.parseInt(mensaje);
                     //String sms = new String(peticion.getData(),0, peticion.getLength());
                     //int a = Integer.parseInt(sms);
+                    
+                    //salida.println("ok"  );
                 System.out.println(a);
                 i=i+1;
                 series.add(i,a);
@@ -460,9 +520,10 @@ public void mostrar(){
                 escribir.println(i+"\t"+a);
                 escribir.close();
                 newline.close();
-                //misocket.close();
+                misocket.close();
                 }
                  
+                System.out.println("salio del socket");
             } catch (IOException ex) {
                 //Logger.getLogger(MarcoServidor.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
