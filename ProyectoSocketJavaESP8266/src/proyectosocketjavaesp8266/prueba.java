@@ -93,7 +93,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                estado="vacio";
        }
     this.nivel.setIcon(image);
-    this.nivel.setText(estado);
+    this.nivel.setText(estado+":"+x);
     //ImageIcon icono = image.getImage (); 
    
     }
