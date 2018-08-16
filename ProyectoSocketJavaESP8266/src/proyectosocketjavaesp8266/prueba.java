@@ -60,7 +60,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         //navegador  doonde esta jlabelhide?
         //fichero.delete();
         // prende el cell
-       this.nombre.setText("Bienvenido ");
+       this.tempe.setText("Bienvenido ");
      
    
         if(!fichero.exists()){
@@ -85,7 +85,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                 nom = rs.getString("nombres");
             }
             System.out.println(nom);
-            nombre.setText("BIENVENIDO: "+nom);
+            tempe.setText("BIENVENIDO: "+nom);
            
         } catch (SQLException ex) {
             System.out.println("malo");
@@ -94,9 +94,9 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     
     
                 
-    XYSeries series = new XYSeries("Sensor Electrocardiograma");
+    XYSeries series = new XYSeries("Sensor");
 		XYSeriesCollection dataset = new XYSeriesCollection(series);
-		JFreeChart chart = ChartFactory.createXYLineChart("Sensor", "Tiempo (Segundos)", "Lectura", dataset, PlotOrientation.VERTICAL,true,true,false);
+		JFreeChart chart = ChartFactory.createXYLineChart("SENTITY", "", "DATOS", dataset, PlotOrientation.VERTICAL,true,true,false);
                 Thread Hilo = new Thread(this);
                  int x=0;
                  //hola
@@ -189,21 +189,11 @@ public void mostrar(){
         jPanel1 = new javax.swing.JPanel();
         pane = new javax.swing.JPanel();
         jLabelhide = new javax.swing.JLabel();
-        BotonParar = new javax.swing.JButton();
         botonComenzar = new javax.swing.JButton();
-        nombre = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        onda = new javax.swing.JLabel();
-        onda1 = new javax.swing.JLabel();
-        onda3 = new javax.swing.JLabel();
-        onda4 = new javax.swing.JLabel();
-        onda5 = new javax.swing.JLabel();
-        onda6 = new javax.swing.JLabel();
-        onda7 = new javax.swing.JLabel();
-        onda8 = new javax.swing.JLabel();
-        onda9 = new javax.swing.JLabel();
-        onda11 = new javax.swing.JLabel();
-        onda10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tempe = new javax.swing.JLabel();
+        nombre1 = new javax.swing.JLabel();
+        BotonParar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -220,16 +210,8 @@ public void mostrar(){
 
         pane.setBackground(new java.awt.Color(204, 255, 255));
         pane.setLayout(new java.awt.BorderLayout());
-        jPanel1.add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 1310, 490));
+        jPanel1.add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 1040, 490));
         jPanel1.add(jLabelhide, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
-
-        BotonParar.setText("Parar");
-        BotonParar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonPararActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 583, 110, 40));
 
         botonComenzar.setText("Comenzar");
         botonComenzar.addActionListener(new java.awt.event.ActionListener() {
@@ -237,66 +219,29 @@ public void mostrar(){
                 botonComenzarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, 120, 40));
+        jPanel1.add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 140, 60));
 
-        nombre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        nombre.setText("Bienvenido:Sujeto_Prueba");
-        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 350, 40));
+        tempe.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        tempe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/frio.png"))); // NOI18N
+        tempe.setText("43hZ");
+        jScrollPane2.setViewportView(tempe);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 290, 230, 160));
+
+        nombre1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nombre1.setText("Bienvenido:Sujeto_Prueba");
+        jPanel1.add(nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 350, 40));
+
+        BotonParar.setText("Parar");
+        BotonParar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotonPararActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 590, -1, 40));
-
-        onda.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
-        jPanel1.add(onda, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 60, 40));
-
-        onda1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
-        jPanel1.add(onda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 60, 40));
-
-        onda3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
-        jPanel1.add(onda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 60, 40));
-
-        onda4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
-        jPanel1.add(onda4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 60, 40));
-
-        onda5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
-        jPanel1.add(onda5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 60, 40));
-
-        onda6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
-        jPanel1.add(onda6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 60, 40));
-
-        onda7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/roja.png"))); // NOI18N
-        jPanel1.add(onda7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 60, 40));
-
-        onda8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ondita.png"))); // NOI18N
-        jPanel1.add(onda8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 60, 40));
-
-        onda9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/roja.png"))); // NOI18N
-        jPanel1.add(onda9, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 60, 40));
-
-        onda11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cora.png"))); // NOI18N
-        jPanel1.add(onda11, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 60, 40));
-
-        onda10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        onda10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cora.png"))); // NOI18N
-        jPanel1.add(onda10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 560, 80, 70));
+        jPanel1.add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, 130, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wi.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 650));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 650));
 
         jTabbedPane1.addTab("Recepción de datos", jPanel1);
 
@@ -337,48 +282,20 @@ public void mostrar(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
-       
-    Hilo.start();
-   // botonComenzar.disable();
-        
-      
-        
-    }//GEN-LAST:event_botonComenzarActionPerformed
-
-    private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
-        
-        //como evento para q en el metodo q se ejecuta en el RUN, salga del ciclo while
-        Finalizar=true;
-        
-        //series.clear();
-        
-        ///rr
-        ///rrr
-        
-        
-    }//GEN-LAST:event_BotonPararActionPerformed
-
     private void jButtonaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaceptarActionPerformed
         // TODO add your handling code here:
         mostrar();
     }//GEN-LAST:event_jButtonaceptarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
 
-        long tiempoinicio=0;
-        long total,finali;
-        if(l==0){
-            tiempoinicio=System.currentTimeMillis();
-            l++;
-        }
-        datos();
-        finali=System.currentTimeMillis();
-        total=finali-tiempoinicio;
-        System.out.println(total/1000);
-
+      Hilo.start();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonComenzarActionPerformed
+
+    private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonPararActionPerformed
 
     
     
@@ -399,7 +316,6 @@ public void mostrar(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonParar;
     private javax.swing.JButton botonComenzar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonaceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelbuscar;
@@ -407,22 +323,13 @@ public void mostrar(){
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldbuscar;
-    public javax.swing.JLabel nombre;
-    public javax.swing.JLabel onda;
-    public javax.swing.JLabel onda1;
-    public javax.swing.JLabel onda10;
-    public javax.swing.JLabel onda11;
-    public javax.swing.JLabel onda3;
-    public javax.swing.JLabel onda4;
-    public javax.swing.JLabel onda5;
-    public javax.swing.JLabel onda6;
-    public javax.swing.JLabel onda7;
-    public javax.swing.JLabel onda8;
-    public javax.swing.JLabel onda9;
+    public javax.swing.JLabel nombre1;
     private javax.swing.JPanel pane;
     private javax.swing.JTable tabla;
+    public javax.swing.JLabel tempe;
     // End of variables declaration//GEN-END:variables
 //Lights On
     @Override

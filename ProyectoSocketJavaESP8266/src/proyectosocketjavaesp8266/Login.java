@@ -140,7 +140,10 @@ public class Login extends javax.swing.JFrame {
         jTextFieldingreso = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -233,7 +236,7 @@ public class Login extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanellogin.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 200, 40));
+        jPanellogin.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 200, 40));
 
         jButton2.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user1.png"))); // NOI18N
@@ -245,9 +248,24 @@ public class Login extends javax.swing.JFrame {
         });
         jPanellogin.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 150, 30));
 
+        jButton4.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add-user222.png"))); // NOI18N
+        jButton4.setText("h");
+        jButton4.setToolTipText("");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanellogin.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 200, 40));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondologin2.jpg"))); // NOI18N
         jLabel1.setText("    ");
         jPanellogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 400));
+
+        jScrollPane1.setViewportView(jTextPane1);
+
+        jPanellogin.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         getContentPane().add(jPanellogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, -1));
 
@@ -334,6 +352,11 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldnombresActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+prueba h = new prueba();
+h.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -374,6 +397,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBoxsexo;
     private javax.swing.JLabel jLabel1;
@@ -388,11 +412,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelicon;
     private javax.swing.JPanel jPanelchange;
     private javax.swing.JPanel jPanellogin;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldapellidos;
     private javax.swing.JTextField jTextFieldcedula;
     private javax.swing.JTextField jTextFieldfecha;
     private javax.swing.JTextField jTextFieldingreso;
     private javax.swing.JTextField jTextFieldlugar;
     private javax.swing.JTextField jTextFieldnombres;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
