@@ -76,16 +76,39 @@ public class prueba extends javax.swing.JFrame implements Runnable {
             }
         }
     }
-    
+      public void nivel(String temp)
+    {
+        ImageIcon image = null;
+        int x=0;
+        String estado = null;
+        x=Integer.parseInt(temp);
+       if(x>300){
+      image= new ImageIcon(getClass().getResource("/imagenes/lleno.png"));
+       estado="lleno";}
+       else if(x>=150 || x<=300){
+     image = new ImageIcon(getClass().getResource("/imagenes/medio.png"));
+       estado="medio";}
+       else if(x<150){
+       image= new ImageIcon(getClass().getResource("/imagenes/vacio.png"));
+               estado="vacio";
+       }
+    this.nivel.setIcon(image);
+    this.nivel.setText(estado);
+    //ImageIcon icono = image.getImage (); 
+   
+    }
      public void humedad (String temp)
     {
-        ImageIcon image;
+        ImageIcon image = null;
         int x=0;
         x=Integer.parseInt(temp);
-       if(x>34 || x<60){
-      image= new ImageIcon(getClass().getResource("/imagenes/on.png"));}
-       else{
-     image = new ImageIcon(getClass().getResource("/imagenes/off.png"));}
+       if(x>=30 || x<=50){
+      image= new ImageIcon(getClass().getResource("/imagenes/op.png"));}
+       else if(x>50){
+     image = new ImageIcon(getClass().getResource("/imagenes/on.png"));}
+       else if(x<30){
+       image= new ImageIcon(getClass().getResource("/imagenes/off.png"));
+       }
     this.hume.setIcon(image);
     this.hume.setText(x+"%");
     //ImageIcon icono = image.getImage (); 
@@ -228,6 +251,8 @@ public void mostrar(){
         BotonParar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         hume = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        nivel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -260,11 +285,11 @@ public void mostrar(){
         tempe.setText("43hZ");
         jScrollPane2.setViewportView(tempe);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 300, 230, 160));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 220, 230, 130));
 
         nombre1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        nombre1.setText("Bienvenido:Sujeto_Prueba");
-        jPanel1.add(nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 350, 40));
+        nombre1.setText("Bienvenido:");
+        jPanel1.add(nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 350, 40));
 
         BotonParar.setText("Parar");
         BotonParar.addActionListener(new java.awt.event.ActionListener() {
@@ -279,7 +304,14 @@ public void mostrar(){
         hume.setText("10%");
         jScrollPane3.setViewportView(hume);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 120, 230, 160));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 370, 230, 130));
+
+        nivel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nivel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vacio.png"))); // NOI18N
+        nivel.setText("10%");
+        jScrollPane4.setViewportView(nivel);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 70, 230, 130));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wi.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 650));
@@ -368,14 +400,17 @@ public void mostrar(){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldbuscar;
+    public javax.swing.JLabel nivel;
     public javax.swing.JLabel nombre1;
     private javax.swing.JPanel pane;
     private javax.swing.JTable tabla;
     public javax.swing.JLabel tempe;
     // End of variables declaration//GEN-END:variables
 //Lights On
+    int bienvenido=0;
     @Override
     public void run() {
         //llamamos al metodo q se quiera, hacen lo mismo, solo q en por ahora tcp usaremos para no perder datos...
@@ -492,9 +527,12 @@ public void mostrar(){
                    Humedad=ValoresRecibidos[2];
                    NivelAgua=ValoresRecibidos[3];
                     
-                    
+                    if(bienvenido==0){
+                    this.nombre1.setText("Conectado con "+ChipId);
+                    }
                  cambio(Integer.toString(Temperatura));
                  humedad(Integer.toString(Humedad));
+                 nivel(Integer.toString(NivelAgua));
                 //mensaje = flujo_entrada.readUTF();
                //int a = Integer.parseInt(mensaje);
                     //String sms = new String(peticion.getData(),0, peticion.getLength());
