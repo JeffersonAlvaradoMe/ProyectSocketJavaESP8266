@@ -26,6 +26,7 @@ import java.sql.Connection;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -74,6 +75,21 @@ public class prueba extends javax.swing.JFrame implements Runnable {
             }
         }
     }
+    public void cambio (String temp)
+    {
+        ImageIcon image;
+        int x=0;
+        x=Integer.parseInt(temp);
+       if(x>=34){
+      image= new ImageIcon(getClass().getResource("/imagenes/calor.png"));}
+       else{
+     image = new ImageIcon(getClass().getResource("/imagenes/frio.png"));}
+    this.tempe.setIcon(image);
+    this.tempe.setText(x+"°C");
+    //ImageIcon icono = image.getImage (); 
+   
+    }
+    
     
     public void consulta(String cedula){
         String sql = "SELECT nombres FROM pacientes WHERE cedula='"+cedula+"' ";
@@ -103,7 +119,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                  
     public prueba() {
        initComponents();
-     
+     Hilo.start();
         jLabelhide.setVisible(false);
         inicio();
         
@@ -289,12 +305,12 @@ public void mostrar(){
 
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
 
-      Hilo.start();
+   //   Hilo.start();
         // TODO add your handling code here:
     }//GEN-LAST:event_botonComenzarActionPerformed
 
     private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
-        // TODO add your handling code here:
+    cambio("34");
     }//GEN-LAST:event_BotonPararActionPerformed
 
     
@@ -443,9 +459,7 @@ public void mostrar(){
                     //System.out.println(peticion);
                 //misocket.getLocalPort();
                  mensaje = flujo_entrada.readLine();
-                
-                
-                
+                 cambio(mensaje);
                 //mensaje = flujo_entrada.readUTF();
                int a = Integer.parseInt(mensaje);
                     //String sms = new String(peticion.getData(),0, peticion.getLength());
