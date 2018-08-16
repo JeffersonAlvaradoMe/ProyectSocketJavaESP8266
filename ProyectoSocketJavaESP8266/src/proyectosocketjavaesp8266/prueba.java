@@ -119,7 +119,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                  
     public prueba() {
        initComponents();
-     Hilo.start();
+  //   Hilo.start();
         jLabelhide.setVisible(false);
         inicio();
         
@@ -305,12 +305,13 @@ public void mostrar(){
 
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
 
-   //   Hilo.start();
+    Hilo.start();
         // TODO add your handling code here:
     }//GEN-LAST:event_botonComenzarActionPerformed
 
     private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
-    cambio("34");
+    //cambio("34");
+    Finalizar=true;
     }//GEN-LAST:event_BotonPararActionPerformed
 
     
