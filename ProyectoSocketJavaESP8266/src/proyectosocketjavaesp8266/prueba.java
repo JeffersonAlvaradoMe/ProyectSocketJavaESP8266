@@ -158,7 +158,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                  
     public prueba() {
        initComponents();
-  //   Hilo.start();
+   Hilo.start();
         jLabelhide.setVisible(false);
         inicio();
         
@@ -581,7 +581,7 @@ public void mostrar(){
                 
                  int ced=0;
                  String cedu = jLabelhide.getText();
-        String mysql2="INSERT INTO datos_corazon (humedad, temperatura, nivel_agua, datos_x, cod_paciente)"+ "values (?,?,?,?,?)";
+        String mysql2="INSERT INTO datos_corazon (chipid, humedad, temperatura, nivel_agua, datos_x, cod_paciente)"+ "values (?,?,?,?,?,?)";
         String my = "SELECT cod_paciente FROM pacientes WHERE cedula = '"+cedu+"'";
         try {
             Statement st2 = cc.createStatement();
@@ -595,11 +595,12 @@ public void mostrar(){
   	    }
             PreparedStatement insertar2 = cc.prepareStatement(mysql2);
             
-           insertar2.setInt(1,Humedad);
-           insertar2.setInt(2,Temperatura);
-           insertar2.setInt(3,NivelAgua);
-           insertar2.setInt(4,i);
-           insertar2.setInt(5,ced);
+            insertar2.setInt(1,ChipId);
+           insertar2.setInt(2,Humedad);
+           insertar2.setInt(3,Temperatura);
+           insertar2.setInt(4,NivelAgua);
+           insertar2.setInt(5,i);
+           insertar2.setInt(6,ced);
            insertar2.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
