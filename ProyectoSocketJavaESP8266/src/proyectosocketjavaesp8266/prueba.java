@@ -511,6 +511,20 @@ public void mostrar(){
     
     }
 
+    public void dibujar(int i, int temp, int hum, int Nivel){
+        try {
+            temperatura.add(i,temp);
+                humedad.add(i,hum);
+                nivel_agua.add(i,Nivel);
+                
+                dataset.addSeries( temperatura );        
+                dataset.addSeries( humedad ); 
+                dataset.addSeries( nivel_agua );
+        } catch (Exception e) {
+        }
+                
+    
+    }
     public void tcp(){
     try{
                 System.out.println("Estoy a la escucha");
@@ -557,12 +571,13 @@ public void mostrar(){
                     //salida.println("ok"  );
                 System.out.println(mensaje);
                 i=i+1;
-                temperatura.add(i,Temperatura);
+                dibujar(i,Temperatura,Humedad,NivelAgua);
+                
+                /*temperatura.add(i,Temperatura);
                 humedad.add(i,Humedad);
-                nivel_agua.add(i,NivelAgua);
-                dataset.addSeries( temperatura );        
-                dataset.addSeries( humedad ); 
-                dataset.addSeries( nivel_agua ); 
+                nivel_agua.add(i,NivelAgua);*/
+                
+             
                 
                  int ced=0;
                  String cedu = jLabelhide.getText();
