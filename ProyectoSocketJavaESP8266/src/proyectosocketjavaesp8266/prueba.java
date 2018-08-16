@@ -215,19 +215,35 @@ public void mostrar(){
         }
 }
     //public
-       int i=0;
+       int i=0, u=0, i2=0;
        int ss=0;
-    public void datos(){
-        double numero;
-        i++;
+    XYSeries temperatura = new XYSeries("Temparatura");
+        XYSeries humedad = new XYSeries("Humedad");  
+         XYSeries nivel_agua = new XYSeries("Nivel Agua");
+     
+       public void datos(){
+         i++;
+        u++;
+        i2++;
+        double numero,numero1, numero2;
         numero =  (Math.random()*1024)+1;
-        series.add(i,1023-numero);
-       /* if(i>10){
-            series.clear();
-            i=0;
-            System.out.println("Llgue al 10");
-        }*/
-    } //No sirvehujj
+         numero1 =  (Math.random()*1024)+1;
+         numero2 =  (Math.random()*1024)+1;
+        
+        //serie #1
+        temperatura.add( i, numero);
+        
+        //serie #2
+        humedad.add( u, numero1);
+        
+        nivel_agua.add(i2, numero2);
+      
+
+        
+        dataset.addSeries( temperatura );        
+        dataset.addSeries( humedad ); 
+        dataset.addSeries( nivel_agua ); 
+       }
     
     //richi
     
@@ -361,7 +377,7 @@ public void mostrar(){
     }//GEN-LAST:event_jButtonaceptarActionPerformed
 
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
-
+//datos();
     Hilo.start();
         // TODO add your handling code here:
     }//GEN-LAST:event_botonComenzarActionPerformed
@@ -541,7 +557,12 @@ public void mostrar(){
                     //salida.println("ok"  );
                 System.out.println(mensaje);
                 i=i+1;
-                series.add(i,Temperatura);
+                temperatura.add(i,Temperatura);
+                humedad.add(i,Humedad);
+                nivel_agua.add(i,NivelAgua);
+                dataset.addSeries( temperatura );        
+                dataset.addSeries( humedad ); 
+                dataset.addSeries( nivel_agua ); 
                 
                  int ced=0;
                  String cedu = jLabelhide.getText();
