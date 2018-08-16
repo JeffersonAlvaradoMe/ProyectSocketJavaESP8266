@@ -82,13 +82,13 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         int x=0;
         String estado = null;
         x=Integer.parseInt(temp);
-       if(x>300){
+       if(x>450){
       image= new ImageIcon(getClass().getResource("/imagenes/lleno.png"));
        estado="lleno";}
-       else if(x>=150 || x<=300){
+       else if(x>=20 || x<=200){
      image = new ImageIcon(getClass().getResource("/imagenes/medio.png"));
        estado="medio";}
-       else if(x<150){
+       else if(x<20){
        image= new ImageIcon(getClass().getResource("/imagenes/vacio.png"));
                estado="vacio";
        }
