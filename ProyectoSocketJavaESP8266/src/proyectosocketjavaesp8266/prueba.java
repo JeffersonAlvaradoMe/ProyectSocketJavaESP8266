@@ -76,12 +76,27 @@ public class prueba extends javax.swing.JFrame implements Runnable {
             }
         }
     }
+    
+     public void humedad (String temp)
+    {
+        ImageIcon image;
+        int x=0;
+        x=Integer.parseInt(temp);
+       if(x>34 || x<60){
+      image= new ImageIcon(getClass().getResource("/imagenes/on.png"));}
+       else{
+     image = new ImageIcon(getClass().getResource("/imagenes/off.png"));}
+    this.hume.setIcon(image);
+    this.hume.setText(x+"%");
+    //ImageIcon icono = image.getImage (); 
+   
+    }
     public void cambio (String temp)
     {
         ImageIcon image;
         int x=0;
         x=Integer.parseInt(temp);
-       if(x>=34){
+       if(x>=27){
       image= new ImageIcon(getClass().getResource("/imagenes/calor.png"));}
        else{
      image = new ImageIcon(getClass().getResource("/imagenes/frio.png"));}
@@ -211,6 +226,8 @@ public void mostrar(){
         tempe = new javax.swing.JLabel();
         nombre1 = new javax.swing.JLabel();
         BotonParar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        hume = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -243,7 +260,7 @@ public void mostrar(){
         tempe.setText("43hZ");
         jScrollPane2.setViewportView(tempe);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 290, 230, 160));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 300, 230, 160));
 
         nombre1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         nombre1.setText("Bienvenido:Sujeto_Prueba");
@@ -256,6 +273,13 @@ public void mostrar(){
             }
         });
         jPanel1.add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, 130, 60));
+
+        hume.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        hume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/off.png"))); // NOI18N
+        hume.setText("10%");
+        jScrollPane3.setViewportView(hume);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 120, 230, 160));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wi.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 650));
@@ -334,6 +358,7 @@ public void mostrar(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonParar;
     private javax.swing.JButton botonComenzar;
+    public javax.swing.JLabel hume;
     private javax.swing.JButton jButtonaceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelbuscar;
@@ -342,6 +367,7 @@ public void mostrar(){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldbuscar;
     public javax.swing.JLabel nombre1;
@@ -468,6 +494,7 @@ public void mostrar(){
                     
                     
                  cambio(Integer.toString(Temperatura));
+                 humedad(Integer.toString(Humedad));
                 //mensaje = flujo_entrada.readUTF();
                //int a = Integer.parseInt(mensaje);
                     //String sms = new String(peticion.getData(),0, peticion.getLength());
