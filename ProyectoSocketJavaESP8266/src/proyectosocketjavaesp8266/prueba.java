@@ -49,9 +49,10 @@ public class prueba extends javax.swing.JFrame implements Runnable {
     Boolean iniciar=false;
     Boolean Finalizar= false;
     
-    /**
-     * Creates new form prueba
-     */
+    int[] ValoresRecibidos= new int[4];
+    int ChipId, Temperatura, Humedad, NivelAgua;
+    
+
     File fichero = new File("E:\\N6.2\\DisenoRedes\\Feria\\datoslectura.txt");
     
     PrintWriter escribir = null;
@@ -443,8 +444,7 @@ public void mostrar(){
                 String mensaje="";
                //Hilo
               // int a1 =0;
-               
-               
+
                
                 while(true && Finalizar==false){
                 Socket misocket = servidor.accept();    
@@ -460,16 +460,23 @@ public void mostrar(){
                     //System.out.println(peticion);
                 //misocket.getLocalPort();
                  mensaje = flujo_entrada.readLine();
-                 cambio(mensaje);
+                   ValoresRecibidos= StringAArray(mensaje);
+                   ChipId=ValoresRecibidos[0];
+                   Temperatura=ValoresRecibidos[1];
+                   Humedad=ValoresRecibidos[2];
+                   NivelAgua=ValoresRecibidos[3];
+                    
+                    
+                 cambio(Integer.toString(Temperatura));
                 //mensaje = flujo_entrada.readUTF();
-               int a = Integer.parseInt(mensaje);
+               //int a = Integer.parseInt(mensaje);
                     //String sms = new String(peticion.getData(),0, peticion.getLength());
                     //int a = Integer.parseInt(sms);
                     
                     //salida.println("ok"  );
-                System.out.println(a);
+                System.out.println(mensaje);
                 i=i+1;
-                series.add(i,a);
+                series.add(i,Temperatura);
                 
                  int ced=0;
                  String cedu = jLabelhide.getText();
@@ -488,7 +495,7 @@ public void mostrar(){
             PreparedStatement insertar2 = cc.prepareStatement(mysql2);
             
            insertar2.setInt(1,i);
-           insertar2.setInt(2,a);
+           insertar2.setInt(2,Temperatura);
            insertar2.setInt(3,ced);
            insertar2.executeUpdate();
         } catch (SQLException ex) {
@@ -502,7 +509,7 @@ public void mostrar(){
                 
                 newline = new FileWriter(fichero,true);
                 escribir = new PrintWriter(newline);
-                escribir.println(i+"\t"+a);
+                escribir.println(i+"\t"+Temperatura);
                 escribir.close();
                 newline.close();
                 misocket.close();
@@ -513,7 +520,21 @@ public void mostrar(){
                 //Logger.getLogger(MarcoServidor.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
             } 
-}
+    }
+    
+     public int [] StringAArray(String A){
+        int [] arreglodatos={0,0,0,0};
+       // String string = "123-654321-789";
+            String[] parts = A.split(",", 6); 
+            
+            arreglodatos[0]= Integer.parseInt(parts[0]);
+            arreglodatos[1]= Integer.parseInt(parts[1]);
+            arreglodatos[2]= Integer.parseInt(parts[2]);
+            arreglodatos[3]= Integer.parseInt(parts[3]);
+            
+            return arreglodatos;
+        
+    }
 }
 
 
