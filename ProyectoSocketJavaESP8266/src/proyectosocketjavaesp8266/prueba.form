@@ -108,7 +108,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/frio.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="43hZ"/>
+                    <Property name="text" type="java.lang.String" value="0 *C"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -141,7 +141,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="760" y="560" width="130" height="60"/>
+                  <AbsoluteConstraints x="760" y="580" width="130" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -162,7 +162,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/off.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="10%"/>
+                    <Property name="text" type="java.lang.String" value="0%"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -187,7 +187,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/vacio.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="10%"/>
+                    <Property name="text" type="java.lang.String" value="Vacio"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

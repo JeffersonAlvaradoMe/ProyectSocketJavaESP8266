@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -22,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.*;
 import java.util.logging.Level;
@@ -76,6 +78,57 @@ public class prueba extends javax.swing.JFrame implements Runnable {
             }
         }
     }
+    //27,28.100
+    public void prender(int tempe,int humed,int nivela){
+        System.out.println(tempe);
+        System.out.println(humed);
+        System.out.println(nivela);
+        if(tempe>=32){
+        envio("a"); 
+        }else if(tempe<32){
+            System.out.println("entre para b");
+        envio("b");
+        }
+            
+            
+            
+        if(humed>50){
+        envio("c");
+        }else if(humed<67){
+        envio("d");
+        }
+            
+        if(nivela>450){
+        envio("e");
+        }else if(nivela<450){
+        envio("f");
+        }
+        
+        
+    
+    }
+    
+    public void envio(String l){
+        try {
+            Socket misocket = new Socket("192.168.10.120",5001);
+                //DatagramSocket misocket = new DatagramSocket();
+                String a="";
+                a=Integer.toString(misocket.getLocalPort());
+                char b;
+                b= l.charAt(0);
+                
+               System.out.println("\nServidor a aceptado petición");
+                DataOutputStream flujo_salida = new DataOutputStream(misocket.getOutputStream());
+              //  flujo_salida.writeUTF(b);
+               // flujo_salida.writeChar(b);
+                flujo_salida.writeBytes(l);
+                //flujo_salida.writeUTF(nick2.getText());
+                //flujo_salida.writeUTF(nick3.getText());
+                flujo_salida.close();
+        } catch (Exception e) {
+        }
+    }
+    
       public void nivel(String temp)
     {
         ImageIcon image = null;
@@ -119,7 +172,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
         ImageIcon image;
         int x=0;
         x=Integer.parseInt(temp);
-       if(x>=27){
+       if(x>=32){
       image= new ImageIcon(getClass().getResource("/imagenes/calor.png"));}
        else{
      image = new ImageIcon(getClass().getResource("/imagenes/frio.png"));}
@@ -158,7 +211,7 @@ public class prueba extends javax.swing.JFrame implements Runnable {
                  
     public prueba() {
        initComponents();
-   Hilo.start();
+//   Hilo.start();
         jLabelhide.setVisible(false);
         inicio();
         
@@ -298,7 +351,7 @@ public void mostrar(){
 
         tempe.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         tempe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/frio.png"))); // NOI18N
-        tempe.setText("43hZ");
+        tempe.setText("0 *C");
         jScrollPane2.setViewportView(tempe);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 220, 230, 130));
@@ -313,18 +366,18 @@ public void mostrar(){
                 BotonPararActionPerformed(evt);
             }
         });
-        jPanel1.add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, 130, 60));
+        jPanel1.add(BotonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 580, 130, 40));
 
         hume.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         hume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/off.png"))); // NOI18N
-        hume.setText("10%");
+        hume.setText("0%");
         jScrollPane3.setViewportView(hume);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 370, 230, 130));
 
         nivel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         nivel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vacio.png"))); // NOI18N
-        nivel.setText("10%");
+        nivel.setText("Vacio");
         jScrollPane4.setViewportView(nivel);
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 70, 230, 130));
@@ -381,10 +434,20 @@ public void mostrar(){
     Hilo.start();
         // TODO add your handling code here:
     }//GEN-LAST:event_botonComenzarActionPerformed
-
+int axc=-1;
     private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
-    //cambio("34");
-    Finalizar=true;
+  axc++;
+        if(axc==0){
+        prender(30,90,455);}
+  else{
+       prender(27,28,100);
+        axc=-1;
+        }
+  
+ 
+ 
+        //cambio("34");
+   // Finalizar=true;
     }//GEN-LAST:event_BotonPararActionPerformed
 
     
@@ -572,6 +635,7 @@ public void mostrar(){
                 System.out.println(mensaje);
                 i=i+1;
                 dibujar(i,Temperatura,Humedad,NivelAgua);
+                prender(Temperatura,Humedad,NivelAgua);
                 
                 /*temperatura.add(i,Temperatura);
                 humedad.add(i,Humedad);
@@ -581,18 +645,13 @@ public void mostrar(){
                 
                  int ced=0;
                  String cedu = jLabelhide.getText();
-        String mysql2="INSERT INTO datos_corazon (chipid, humedad, temperatura, nivel_agua, datos_x, cod_paciente)"+ "values (?,?,?,?,?,?)";
-        String my = "SELECT cod_paciente FROM pacientes WHERE cedula = '"+cedu+"'";
+        String mysql2="INSERT INTO datos_corazon (chipId, humedad, temperatura, nivel_agua, datos_x)"+ "values (?,?,?,?,?)";
+        
         try {
             Statement st2 = cc.createStatement();
-            ResultSet registro = st2.executeQuery(my);
             
-            if (registro.next()==true) {
-  	        ced = registro.getInt("cod_paciente");
-  			  	
-  	    }else {
-  		setTitle("No hay");
-  	    }
+            
+            
             PreparedStatement insertar2 = cc.prepareStatement(mysql2);
             
             insertar2.setInt(1,ChipId);
@@ -600,7 +659,7 @@ public void mostrar(){
            insertar2.setInt(3,Temperatura);
            insertar2.setInt(4,NivelAgua);
            insertar2.setInt(5,i);
-           insertar2.setInt(6,ced);
+           
            insertar2.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
@@ -624,6 +683,61 @@ public void mostrar(){
                 //Logger.getLogger(MarcoServidor.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
             } 
+    }
+    public void disparadorTemp(int temp){
+        Socket cliente = null;
+		DataInputStream entrada = null;
+		DataOutputStream salida = null;
+		int Puerto2 =5001;//debe ser mayor que 1024	
+		String ipServidor ="192.168.100.17";	
+                
+        try {	
+ 
+			cliente = new Socket(ipServidor, Puerto2);  
+			//asignamos este numero de puerto
+			entrada = new DataInputStream(cliente.getInputStream());
+			// será lo que enviaremos al servidor	
+			salida = new DataOutputStream(cliente.getOutputStream());
+			// será lo que nos devuelva el servidor	
+ 
+		}
+		catch (UnknownHostException excepcion) {
+			System.err.println("El servidor no está levantado");
+		}//Fin de excepciones especiales q arrojan esta clase socket
+		catch (Exception e) {
+			System.err.println("Error: " + e );
+		}// fin de captura de excepciones de las clases q no son socket
+ 
+		try {
+			
+			String linea_recibida;
+			do{//búcle que sirve para enviar mensajes a servidor hasta que
+				//usemos la palabra salir
+				////System.out.println("Escriba un mensaje para Servidor:");
+				System.out.print("-->");
+				
+				salida.writeBytes('a' + "\n");//metodo para enviar el mensaje
+				linea_recibida = entrada.readLine();
+				System.out.println("SERVIDOR DICE: " + linea_recibida);
+			}while(temp>28);//fin bucle, sin este bucle la 
+			//conexion cerraria apenas se envie un solo mensaje
+			
+			//Se deben cerrar los objetos de socket y de flujo
+			salida.close();
+			entrada.close();
+			cliente.close();
+			System.out.println("Fin conexion");
+		}
+		catch (UnknownHostException excepcion) {
+			System.err.println("No encuentro el servidor en la dirección" + ipServidor);
+		}//Fin de excepciones especiales q arrojan esta clase socket
+		catch (IOException excepcion) {
+			System.err.println("Error de entrada/salida");
+		}
+		catch (Exception e) {
+			System.err.println("Error: " + e );
+ 
+		}// fin de captura de excepciones de las clases q no son socket
     }
     
      public int [] StringAArray(String A){
